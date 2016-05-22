@@ -14,8 +14,7 @@
     // of different video formats to add
     src: [
       {
-        // src: 'night.mp4',
-        src: 'http://rishabhp.github.io/bideo.js/night.mp4',
+        src: 'night.mp4',
         type: 'video/mp4'
       }
     ],
