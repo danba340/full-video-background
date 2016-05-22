@@ -8,8 +8,8 @@
 
 (function (global) {
 
-  // Define BackgroundVideo constructor on the global object
-  global.BackgroundVideo = function () {
+  // Define Bideo constructor on the global object
+  global.Bideo = function () {
 
     // Plugin options
     this.opt = null;

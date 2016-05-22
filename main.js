@@ -1,5 +1,5 @@
 (function () {
-  var bv = new BackgroundVideo();
+  var bv = new Bideo();
   bv.init({
     // Video element
     videoEl: document.querySelector('#background_video'),
