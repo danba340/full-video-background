@@ -28,6 +28,9 @@
 
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
+
+      object-fit: cover;
+      height: 100%; width: 100%;
     }
 
     #video_cover {
@@ -38,6 +41,28 @@
       background: url('video_cover.jpeg') no-repeat;
       background-size: cover;
       background-position: center;
+    }
+
+    #video_controls {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    #play img {
+      width: 100px;
+    }
+    #pause img {
+      width: 90px;
+    }
+    #pause {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      #video_controls {
+        display: none;
+      }
     }
 
     /* Demo page specific styles */
@@ -126,9 +151,18 @@
 </head>
 <body>
   <div id="container">
-    <video id="background_video" loop muted autoplay></video>
+    <video id="background_video" loop muted></video>
     <div id="video_cover"></div>
     <div id="overlay"></div>
+
+    <div id="video_controls">
+      <span id="play">
+        <img src="play.png">
+      </span>
+      <span id="pause">
+        <img src="pause.png">
+      </span>
+    </div>
 
     <section id="main_content">
       <div id="head">

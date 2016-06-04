@@ -34,6 +34,8 @@
     // Time at which video is initialized
     this.startTime = null;
 
+    this.onLoadCalled = false;
+
     // Initialize and setup the video in DOM`
     this.init = function (opt) {
       // If not set then set to an empty object
@@ -52,10 +54,11 @@
       // Fired when enough has been buffered to begin the video
       // self.videoEl.readyState === 4 (HAVE_ENOUGH_DATA)
       self.videoEl.addEventListener('canplay', function () {
-        self.opt.onLoad && self.opt.onLoad();
-
         // Play the video when enough has been buffered
-        self.videoEl.play();
+        if (!self.opt.isMobile) {
+          self.opt.onLoad && self.opt.onLoad();
+          self.videoEl.play();
+        }
       });
 
       // If resizing is required (resize video as window/container resizes)
@@ -84,6 +87,32 @@
         self.videoEl.appendChild(source);
       });
 
+      if (self.opt.isMobile) {
+        if (self.opt.playButton) {
+          self.opt.videoEl.addEventListener('timeupdate', function () {
+            if (!self.onLoadCalled) {
+              self.opt.onLoad && self.opt.onLoad();
+              self.onLoadCalled = true;
+            }
+          });
+
+
+          self.opt.playButton.addEventListener('click', function () {
+            self.opt.pauseButton.style.display = 'inline-block';
+            this.style.display = 'none';
+
+            self.videoEl.play();
+          }, false);
+
+          self.opt.pauseButton.addEventListener('click', function () {
+            this.style.display = 'none';
+            self.opt.playButton.style.display = 'inline-block';
+
+            self.videoEl.pause();
+          }, false);
+        }
+      }
+
       return;
     }
 
@@ -91,6 +120,7 @@
     //
     // Also called when window/container is resized
     this.resize = function () {
+      return;
       // Video's intrinsic dimensions
       var w = this.videoEl.videoWidth
         , h = this.videoEl.videoHeight;
