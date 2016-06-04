@@ -57,7 +57,7 @@
         // Play the video when enough has been buffered
         if (!self.opt.isMobile) {
           self.opt.onLoad && self.opt.onLoad();
-          self.videoEl.play();
+          if (self.opt.autoplay !== false) self.videoEl.play();
         }
       });
 

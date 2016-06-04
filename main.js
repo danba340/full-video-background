@@ -1,5 +1,5 @@
 (function () {
-  
+
   var bv = new Bideo();
   bv.init({
     // Video element
@@ -10,6 +10,8 @@
 
     // Resize
     resize: true,
+
+    // autoplay: false,
 
     isMobile: window.matchMedia('(max-width: 768px)').matches,
 
