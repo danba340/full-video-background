@@ -120,7 +120,9 @@
     //
     // Also called when window/container is resized
     this.resize = function () {
-      return;
+      // IE/Edge still don't support object-fit: cover
+      if ('object-fit' in document.body.style) return;
+
       // Video's intrinsic dimensions
       var w = this.videoEl.videoWidth
         , h = this.videoEl.videoHeight;
