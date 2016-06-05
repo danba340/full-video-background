@@ -16,6 +16,8 @@
     "*.png",
     "*.md",
     "*.html",
-    "main.js"
+    "main.js",
+    "*.mp4",
+    "*.jp*"
   ]
 }
