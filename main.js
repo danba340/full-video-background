@@ -16,7 +16,7 @@
     ],
     // On video loaded
     onLoad: function () {
-      // document.querySelector('#video_cover').style.display = 'none';
+      document.querySelector("#video_cover").style.display = "none";
     },
   });
 }());
